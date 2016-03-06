@@ -9,11 +9,13 @@
 * [mongodb](http://dl.mongodb.org/downloads)
 
 **本人使用测试环境**
+
 | 应用 | 版本 |
 | :-- | :-- |
-| Ubuntu | 14.04 x64 |
+| Ubuntu | 14.04 |
 | Nodejs | 0.12.x |
 | Mongodb | 2.6.7 |
+
 > 提示：高版本也可正常使用
 
 所需环境请自行安装。
