@@ -93,6 +93,11 @@ var config = {
 
 `route.js`为服务端脚本，`client.js`为未压缩客户端脚本，**请编辑后使用`uglifyjs`进行压缩成`client.min.js`文件覆盖原文件。**
 
+## 注意事项
+
+1. Chrome 70 之后，非 https 环境下不能访问 applicationCache, 请务必配置 https 后访问后台。客户端不受影响。
+
+2. 建议在前面配置 nginx 反向代理，同时开启 http 和 https
 
 ## 说明
 
