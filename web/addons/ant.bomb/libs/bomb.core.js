@@ -5,7 +5,7 @@
     //- 配置选项
     //
     config: {
-        host: 'http://#{HOST}'
+        host: window.location.protocol + '//#{HOST}'
     },
     //
     //- 初始化函数
