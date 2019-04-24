@@ -1,7 +1,24 @@
 # 蚁逅@1.0
 > 代码仅供学习参考与合法的研究测试。
 
-## 安装与布署
+## 使用 Docker 
+
+```
+$ wget https://raw.githubusercontent.com/AntSwordProject/ant/master/docker-compose.yml
+$ docker-compose up -d -f docker-compose.yml
+```
+
+如果需要配置邮件, 只需要修改 `docker-compose.yml` 中部分环境变量
+
+```
+- ANT_MAIL_HOST=smtp.qq.com
+- ANT_MAIL_PORT=465
+- ANT_MAIL_SECURE=true
+- ANT_MAIL_EMAIL=email@user.com
+- ANT_MAIL_PASSWORD=email-password
+```
+
+## 手动安装与布署
 
 ### 0. 依赖环境
 
@@ -77,14 +94,15 @@ http://127.0.0.1:3000
 
 这个功能采用了`nodemailer`模块，目前个人使用的是QQ邮箱的SMTP功能，用户可自行更改
 
-编辑 `modules/mail.js` 的 `config` 变量即可
+设置以下环境变量, 然后启动即可
 
 ```
-var config = {
-	name: 'ANT',
-	email: 'email@user.com',
-	password: 'email-password'
-}
+export ANT_MAIL_NAME='ANT' \
+  ANT_MAIL_HOST='smtp.qq.com' \
+  ANT_MAIL_PORT=465 \
+  ANT_MAIL_SECURE=true \
+  ANT_MAIL_EMAIL='email@user.com' \
+  ANT_MAIL_PASSWORD='email-password'
 ```
 
 ### 2. 扩展功能
@@ -93,6 +111,11 @@ var config = {
 
 `route.js`为服务端脚本，`client.js`为未压缩客户端脚本，**请编辑后使用`uglifyjs`进行压缩成`client.min.js`文件覆盖原文件。**
 
+## 注意事项
+
+1. Chrome 70 之后，非 https 环境下不能访问 applicationCache, 请务必配置 https 后访问后台。客户端不受影响。
+
+2. 建议在前面配置 nginx 反向代理，同时开启 http 和 https
 
 ## 说明
 
